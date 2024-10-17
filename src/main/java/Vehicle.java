@@ -1,6 +1,6 @@
 public class Vehicle {
-    String name;
-    int speed;
+    final String name;
+    final int speed;
 
     Vehicle(String name, int speed) {
         this.name = name;

@@ -1,17 +1,17 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
+    private final static int MAX_CAR_IN_RACE = 3; //Завел переменную если вдруг надо будет ввести больше 3 авто в будущем
+
     public static void main(String[] args) {
-        int condition = 3; //Завел переменную если вдруг надо будет ввести больше 3 авто в будущем
         String vehicleName;
         int vehicleSpeed;
         Scanner scanner = new Scanner(System.in);
-        ArrayList<Vehicle> listOfVehicle = new ArrayList<>();
+        Race race = new Race();
         System.out.println("Приветствуем вас на соревнованиях!");
-        System.out.println("В гонке участвует " + condition + " автомобиля");
+        System.out.println("В гонке участвует " + MAX_CAR_IN_RACE + " автомобиля");
 
-        for (int i = 1; i <= condition; i++) {
+        for (int i = 1; i <= MAX_CAR_IN_RACE; i++) {
             System.out.println("- Введите название машины №" + i + ":");
             vehicleName = scanner.next();
 
@@ -32,10 +32,9 @@ public class Main {
                     scanner.next();
                 }
             }
-            listOfVehicle.add(new Vehicle(vehicleName, vehicleSpeed));
+            race.calculateWinner(new Vehicle(vehicleName, vehicleSpeed));
         }
-        Race race = new Race();
-        race.calculateWinner(listOfVehicle);
         race.printWinner();
+        scanner.close();
     }
 }
